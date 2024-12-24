@@ -34,11 +34,13 @@
 # - Some video may not have a Language define in the Audio, resulting in a language_ tag added.
 #       I kept it like that cause it may help you edit manually if you care... I dont !
 ##
+import os
+
 import requests
-JELLYFIN_URL = 'http://localhost:8096' # To be changed !
+JELLYFIN_URL = os.getenv("JELLYFIN_URL", 'http://localhost:8096') # To be changed !
 #It has to be the admin user to be sure it works
-USERNAME = 'username'
-PASSWORD = 'password'
+USERNAME = os.getenv("JELLYFIN_USERNAME", 'username')
+PASSWORD = os.getenv("JELLYFIN_PASSWORD", 'password')
 
 
 #set 0 to do all the files in the Jellyfin server
