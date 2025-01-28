@@ -2,12 +2,13 @@
 # This is a cleaning script, in case you customized add_language_tag.py script but made mistakes
 # It will remove the language_xxx tags for every series and every movies 
 ##
+import os
 
 import requests
-JELLYFIN_URL = 'http://localhost:8096' # To be changed !
+JELLYFIN_URL = os.getenv("JELLYFIN_URL", 'http://localhost:8096') # To be changed !
 #It has to be the admin user to be sure it works
-USERNAME = 'usrname'
-PASSWORD = 'password'
+USERNAME = os.getenv("JELLYFIN_USERNAME", 'username')
+PASSWORD = os.getenv("JELLYFIN_PASSWORD", 'password')
 
 
 #set 0 to do all the files in the Jellyfin server
