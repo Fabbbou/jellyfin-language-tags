@@ -52,13 +52,14 @@ JELLYFIN_PASSWORD=example
 python add_language_tag.py
 ```
 
+-----
+
 See the comments in the files for more details
 
 Special thanks to this gist that helped https://gist.github.com/mcarlton00/f7bd7218828ed465ce0f309cebf9a247
 
 Feel free to fork or PR if you feel it could be better.
 
------
 
 ## Contributors
 Thanks [ToasterUwU](https://github.com/ToasterUwU) for the docker integration!
