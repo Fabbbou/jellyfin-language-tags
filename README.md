@@ -7,11 +7,14 @@ Dependencies:
 - requests python lib
 - [Jellyfin REST API](https://api.jellyfin.org/)
 
-## Run
+## Getting started
 
-### Docker
+### Build the docker container
+```sh
+docker build -t jellyfin-language-tags:latest .
+```
 
-**Docker run (one shot)**
+### Docker run: one shot
 ```sh
 docker run --rm \
   --name language_tag_tool \
@@ -21,7 +24,7 @@ docker run --rm \
   jellyfin-language-tags:latest
 ```
 
-**Docker run (cronjob-like, every 3hours)**
+### Docker run: deamon, cronjob-like, every 3hours
 ```sh
 docker run -d \
   --name language_tag_tool \
@@ -33,7 +36,7 @@ docker run -d \
   jellyfin-language-tags:latest
 ```
 
-**Docker compose:**
+### Docker compose:
 - Edit docker-compose.yml
     - INTERVAL_HOURS make it working as a cronjob.  
 - `docker compose up`
