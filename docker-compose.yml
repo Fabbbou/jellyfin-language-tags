@@ -6,11 +6,12 @@ services:
     build:
       context: .  # Build context is the current directory
     environment:
-      - INTERVAL_HOURS=3  # Set environment variables here
       - JELLYFIN_URL=https://jellyfin.example.com
       - JELLYFIN_USERNAME=admin
       - JELLYFIN_PASSWORD=example
-    restart: unless-stopped  # Automatically restart the container if it stops
+      # Optional, Run the tool every 3 hours, remove it to run it once
+      - INTERVAL_HOURS=3
+    restart: unless-stopped
 
   # clear_tags_runner:
   #   image: jellyfin-language-tags:latest

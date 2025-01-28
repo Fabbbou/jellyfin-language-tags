@@ -9,9 +9,45 @@ Dependencies:
 
 ## Run
 
+### Docker
+
+**Docker run (one shot)**
+```sh
+docker run --rm \
+  --name language_tag_tool \
+  -e JELLYFIN_URL=https://jellyfin.example.com \
+  -e JELLYFIN_USERNAME=admin \
+  -e JELLYFIN_PASSWORD=example \
+  jellyfin-language-tags:latest
+```
+
+**Docker run (cronjob-like, every 3hours)**
+docker run -d \
+  --name language_tag_tool \
+  -e JELLYFIN_URL=https://jellyfin.example.com \
+  -e JELLYFIN_USERNAME=admin \
+  -e JELLYFIN_PASSWORD=example \
+  -e INTERVAL_HOURS=3 \
+  --restart unless-stopped \
+  jellyfin-language-tags:latest
+
+**Docker compose:**
+- Edit docker-compose.yml
+    - INTERVAL_HOURS make it working as a cronjob.  
+- `docker compose up`
+
+### Local install
+
 Replace the enviroment variable values with the correct ones for you.
 ```sh
+# oneliner
 JELLYFIN_URL=https://jellfin.example.com JELLYFIN_USER=admin JELLYFIN_PASSWORD=example python add_language_tag.py
+
+#or
+JELLYFIN_URL=https://jellyfin.example.com
+JELLYFIN_USER=admin
+JELLYFIN_PASSWORD=example
+python add_language_tag.py
 ```
 
 See the comments in the files for more details
@@ -20,12 +56,7 @@ Special thanks to this gist that helped https://gist.github.com/mcarlton00/f7bd7
 
 Feel free to fork or PR if you feel it could be better.
 
-## Docker
+-----
 
-To run this as a Docker Container:
-
-1. Download the repo with the "Code" Button on Github, download as ZIP file or clone with Git
-2. Make sure you have Docker installed
-3. Open a Terminal in the folder with all the downloaded files
-4. Edit docker-compose.yml
-5. `docker-compose up`
+## Contributors
+Thanks [ToasterUwU](https://github.com/ToasterUwU) for the docker integration!
