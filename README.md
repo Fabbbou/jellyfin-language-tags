@@ -22,6 +22,7 @@ docker run --rm \
 ```
 
 **Docker run (cronjob-like, every 3hours)**
+```sh
 docker run -d \
   --name language_tag_tool \
   -e JELLYFIN_URL=https://jellyfin.example.com \
@@ -30,6 +31,7 @@ docker run -d \
   -e INTERVAL_HOURS=3 \
   --restart unless-stopped \
   jellyfin-language-tags:latest
+```
 
 **Docker compose:**
 - Edit docker-compose.yml
