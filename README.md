@@ -2,10 +2,19 @@
 
 A small python script to add language tags based on the audio files using Jellyfin REST API
 
-Dependencies:
-- python (i used python 3 but may works on others?)
-- requests python lib
-- [Jellyfin REST API](https://api.jellyfin.org/)
+It will add a tag based on the Audio tracks in the videos.
+The format of the tag is : `language_<language_found>` for example: `language_eng` for english
+If the tag already exists, it will not duplicate, so you can run this script safely every hour, or months for example.
+
+When the process is done, you should launch a Library scan in Jellyfin to apply tags everywhere.
+
+> The process took me 10 minutes for ~500 files in my Jellyfin server.
+> 
+> See the comments in the `add_language.py` files for more details about the process of the script
+>
+> Special thanks to this gist that helped https://gist.github.com/mcarlton00/f7bd7218828ed465ce0f309cebf9a247
+
+_Feel free to fork or PR if you feel it could be better._
 
 ## Getting started
 
@@ -55,13 +64,10 @@ JELLYFIN_PASSWORD=example
 python add_language_tag.py
 ```
 
------
-
-See the comments in the files for more details
-
-Special thanks to this gist that helped https://gist.github.com/mcarlton00/f7bd7218828ed465ce0f309cebf9a247
-
-Feel free to fork or PR if you feel it could be better.
+## Know bugs:
+- Some video may not have a Language define in the Audio, resulting in a `language_` or `language_und` tag added.
+  - I kept it like that cause it may help you edit manually if you care... I dont !
+- if you find one, feel free to open an Issue !
 
 
 ## Contributors
