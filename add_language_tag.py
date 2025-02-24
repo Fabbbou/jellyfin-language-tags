@@ -2,37 +2,14 @@
 # This has been tested the 20th December 2024
 # When the process is done, you should launch a Library scan in Jellyfin to apply tags everywhere.
 # 
-# Vars to set:
-# JELLYFIN_URL (ex: http://your/jellyfin:PORT)
-# USERNAME (tested on Admin account only)
-# PASSWORD
-# and run ! 
-#
-# Dependencies:
-# I used python3, and requests lib...
-# pip install requests (if you dont have it, but I guess it's a common lib to have)
-# 
-# The process took me 10 minutes for ~500 files.
-#
-# It will add a tag based on the Audio tracks in the videos.
-# The format of the tag is : language_<language_found> for example: language_eng for english
-# If the tag already exists, it will not duplicate, so you can run this script safely every month for example.
-# 
 # If you wanna see more details of the script during the process, feel free to enable VERBOSE by changing the var.
 # DEBUG is really to debug, as it print some http response.
 # The NUMBER_PER_BATCH is based at 10, to process items because it was ok for me, but feel free to change it as well if you want
 # 
 #
-# Special thanks to this gist that gave me the piece of example to start the project https://gist.github.com/mcarlton00/f7bd7218828ed465ce0f309cebf9a247
-#
-#
-#
 # Some part of the Jellyfin API doesn't give enough info without an admin login auth. Maybe there is some way to fix it but it took me already enough time to setup :p
-# BTW, don't EVER do UpdateItems (POST to /Items/{item_id}) without re-using the exact result of  GET /Items/{item_id} endpoint as input to the update, or it will corrupt your metadata (Jellyfin doesn't like it for some reason...) 
+# BTW, about Jellyfin API: don't EVER do UpdateItems (POST to /Items/{item_id}) without re-using the exact result of  GET /Items/{item_id} endpoint as input to the update, or it will corrupt your metadata (Jellyfin doesn't like it for some reason...) 
 #
-# Know bugs:
-# - Some video may not have a Language define in the Audio, resulting in a language_ tag added.
-#       I kept it like that cause it may help you edit manually if you care... I dont !
 ##
 import os
 
